@@ -371,6 +371,9 @@ export class DebugSession extends ProtocolServer {
 			} else if (request.command === 'stepOut') {
 				this.stepOutRequest(<DebugProtocol.StepOutResponse> response, request.arguments);
 
+			} else if (request.command === 'stepBack') {
+				this.stepBackRequest(<DebugProtocol.StepBackResponse> response, request.arguments);
+
 			} else if (request.command === 'pause') {
 				this.pauseRequest(<DebugProtocol.PauseResponse> response, request.arguments);
 
@@ -450,6 +453,10 @@ export class DebugSession extends ProtocolServer {
 	}
 
 	protected stepOutRequest(response: DebugProtocol.StepOutResponse, args: DebugProtocol.StepOutArguments) : void {
+		this.sendResponse(response);
+	}
+
+	protected stepBackRequest(response: DebugProtocol.StepBackResponse, args: DebugProtocol.StepBackArguments) : void {
 		this.sendResponse(response);
 	}
 
